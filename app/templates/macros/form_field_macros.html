@@ -1,0 +1,35 @@
+{% macro render_field(field) %}
+<div class="form-group">
+    {% with cls = "form-control is-invalid" if field.errors else "form-control" %}
+        {%  if field.widget.input_type == "submit" %}
+            {% set cls = "btn btn-outline-primary custom-btn" %}
+        {% endif %}
+        {% if field.widget.input_type == 'checkbox' %}
+            {{ field }}
+            {{ field.label }}
+        {% else %}
+            {% if field.widget.input_type != 'hidden' and field.widget.input_type != 'submit' %}
+                {{ field.label(class="form-label") }}:
+            {% endif %}
+            {{ field(class=cls) }}
+        {% endif %}
+    {% endwith %}
+    {% for error in field.errors %}
+    <div class="invalid-feedback">{{ error }}</div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+
+{% macro error_messages(form) %}
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for field in form.errors %}
+        <b>{{ form[field].label | capitalize }} field has following errors:</b>
+            {% for error in form.errors[field] %}
+                {{ error }} <br>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endmacro %}
