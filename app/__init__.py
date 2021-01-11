@@ -26,10 +26,16 @@ def create_app(config_env=''):
     login_manager.login_message = _l('You need to be logged in to access this page.')
     login_manager.login_message_category = 'danger'
 
-    from app.main.views import bp_main
     from app.auth.views import bp_auth
-    app.register_blueprint(bp_main)
     app.register_blueprint(bp_auth, url_prefix='/auth')
+
+    with app.app_context():
+        from app.main.views import bp_main
+        app.register_blueprint(bp_main)
+        from app.album.views import bp_album
+        app.register_blueprint(bp_album, url_prefix='/albums')
+        from app.tour.views import bp_tour
+        app.register_blueprint(bp_tour, url_prefix='/tours')
 
     Migrate(app, db)
 

@@ -1,0 +1,15 @@
+{% extends 'partials/_base.html' %}
+{% block headline %}{{ _('Upload new album') }}{% endblock %}
+
+{% set active_page = 'new_album' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+    {% with enctype = True %}
+      {% include 'partials/_form.html' %}
+    {% endwith %}
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'partials/_base.html' %}
+{% block headline %}{{ _('Update album information') }} - <a href="{{ url_for('album.show', slug=album.slug) }}">{{ album.title }}</a>{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+      {% with %}
+      {% set action = url_for('album.edit', slug=album.slug) %}
+      {% set enctype = True %}
+        {% include 'partials/_form.html' %}
+      {% endwith %}
+  </div>
+</div>
+{% endblock %}

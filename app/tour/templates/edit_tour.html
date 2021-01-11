@@ -1,0 +1,14 @@
+{% extends 'partials/_base.html' %}
+{% block headline %}{{ _('Update tour information') }} - <a href="{{ url_for('tour.show', slug=tour.slug) }}">{{ tour.title }}</a>{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+      {% with %}
+      {% set action = url_for('tour.edit', slug=tour.slug) %}
+      {% set enctype = True %}
+        {% include 'partials/_form.html' %}
+      {% endwith %}
+  </div>
+</div>
+{% endblock %}

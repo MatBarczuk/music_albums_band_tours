@@ -23,6 +23,12 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def is_album_owner(self, album):
+        return self.id == album.user_id
+
+    def is_tour_owner(self, tour):
+        return self.id == tour.user_id
+
     def __repr__(self):
         return f'<User {self.username}>'
 

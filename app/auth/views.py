@@ -45,7 +45,7 @@ def login():
             return redirect(url_for('auth.login'))
 
         login_user(user, form.remember_me.data)
-        flash(_('Logged in.'))
+        flash(_('Logged in.'), 'success')
         return redirect(request.args.get('next') or url_for('main.index'))
     return render_template('login.html', form=form)
 
