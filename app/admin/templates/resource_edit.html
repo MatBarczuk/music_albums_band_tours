@@ -1,0 +1,12 @@
+{% extends 'partials/_base.html' %}
+{% block headline %}Update {{ resource_name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+      {% with action = url_for(f'admin.{resource_name}', resource_id=model_instance.id) %}
+        {% include 'partials/_form.html' %}
+      {% endwith %}
+  </div>
+</div>
+{% endblock %}

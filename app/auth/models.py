@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(64), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(255), nullable=False)
+    is_admin = db.Column(db.Boolean(), default=False)
 
     def __init__(self, username='', email='', password=''):
         self.username = username
@@ -28,6 +29,9 @@ class User(db.Model, UserMixin):
 
     def is_tour_owner(self, tour):
         return self.id == tour.user_id
+
+    def make_admin(self):
+        self.is_admin = True
 
     def __repr__(self):
         return f'<User {self.username}>'

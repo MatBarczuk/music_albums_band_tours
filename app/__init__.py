@@ -36,6 +36,8 @@ def create_app(config_env=''):
         app.register_blueprint(bp_album, url_prefix='/albums')
         from app.tour.views import bp_tour
         app.register_blueprint(bp_tour, url_prefix='/tours')
+        from app.admin.views import bp_admin
+        app.register_blueprint(bp_admin, url_prefix='/admin')
 
     Migrate(app, db)
 
