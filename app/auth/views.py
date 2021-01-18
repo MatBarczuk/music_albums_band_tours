@@ -3,7 +3,7 @@ from flask_login import current_user, login_user, logout_user
 from flask_babel import _
 from werkzeug.utils import redirect
 
-from app import db
+from app.extentions import db
 from app.auth.forms import RegistrationForm, LoginForm
 from app.auth.models import User
 
@@ -39,7 +39,6 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        print(user, form.password.data, form.email.data)
         if user is None or not user.check_password(form.password.data):
             flash(_('Invalid email or password'), 'danger')
             return redirect(url_for('auth.login'))

@@ -8,6 +8,8 @@ class Config:
     ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png']
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LANGUAGES = ['en', 'hr']
+    ADMIN_VIEWS = []
 
 
 class ProductionConfig(Config):

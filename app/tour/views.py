@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from flask_babel import _
 from flask_babel import lazy_gettext as _l
 # Imports from the app package
-from app import db
+from app.extentions import db
 from app.tour.models import Tour
 
 from app.tour.forms import CreateTourForm, UpdateTourForm

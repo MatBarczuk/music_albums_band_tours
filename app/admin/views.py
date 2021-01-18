@@ -6,10 +6,11 @@ from flask_login import login_required, current_user
 from werkzeug.utils import redirect
 from flask_babel import _
 
-from app import db
+from app.extentions import db
 from app.album.forms import UpdateAlbumForm
 from app.album.models import Album
 from app.auth.models import User
+from app.tour.forms import UpdateTourForm
 from app.tour.models import Tour
 
 bp_admin = Blueprint('admin', __name__, template_folder='templates')
@@ -41,10 +42,6 @@ class TableView(View):
                                edit_allowed=self.edit_allowed, resource_name=self.resource_name)
 
 
-bp_admin.add_url_rule('/tours', view_func=TableView.as_view('tour', model=Tour))
-bp_admin.add_url_rule('/users', view_func=TableView.as_view('user', model=User))
-
-
 class ModifyResourceView(MethodView):
     decorators = [admin_required, login_required]
 
@@ -53,12 +50,13 @@ class ModifyResourceView(MethodView):
         self.edit_form = edit_form
         self.columns = self.model.__mapper__.columns.keys()
         self.resource_name = self.model.__name__.lower()
-        super(ModifyResourceView, self).__init__()
+        self.form = edit_form()
+        super(MethodView, self).__init__()
 
     def get(self, resource_id):
-        form = self.edit_form()
+        form = self.form
         parameters = self.get_update_parameters(form)
-        model_instance = self.get_model_instence(resource_id)
+        model_instance = self.get_model_instance(resource_id)
 
         for parameter in parameters:
             form_attr = getattr(form, parameter)
@@ -68,7 +66,7 @@ class ModifyResourceView(MethodView):
                                form=form, parameters=parameters)
 
     def post(self, resource_id):
-        form = self.edit_form()
+        form = self.form
         parameters = self.get_update_parameters(form)
         model_instance = self.get_model_instance(resource_id)
         if form.validate_on_submit():
@@ -78,7 +76,13 @@ class ModifyResourceView(MethodView):
             db.session.add(model_instance)
             db.session.commit()
             return redirect(url_for(f"admin.{self.resource_name}_table"))
-        return redirect(url_for(f"admin.{self.resource_name}", resource_id=model_instance.id))
+
+        for parameter in parameters:
+            form_attr = getattr(form, parameter)
+            form_attr.data = getattr(model_instance, parameter)
+
+        return render_template('resource_edit.html', resource_name=self.resource_name, model_instance=model_instance,
+                               form=form, parameters=parameters)
 
     def delete(self, resource_id):
         model_instance = self.get_model_instance(resource_id)
@@ -89,13 +93,29 @@ class ModifyResourceView(MethodView):
     def get_model_instance(self, resource_id):
         return self.model.query.filter_by(id=resource_id).first()
 
-    def get_update_parameters(self, form_instance):
+    @staticmethod
+    def get_update_parameters(form_instance):
         parameter_list = list(form_instance.__dict__.keys())
         parameter_list = [parameter for parameter in parameter_list if
                           parameter[0] != '_' and parameter not in ['submit', 'csrf_token', 'meta']]
         return parameter_list
 
 
-bp_admin.add_url_rule('/albums', view_func=TableView.as_view('album', model=Album))
-bp_admin.add_url_rule('/albums/<int:resource_id>',
-                      view_func=ModifyResourceView.as_view('album_edit', model=Album, edit_form=UpdateAlbumForm))
+def register_admin_resource(model, edit_form=None):
+    resource_name = model.__name__.lower()
+    view_func = ModifyResourceView.as_view(resource_name, model=model, edit_form=edit_form)
+    edit_allowed = True
+    view_methods = ['GET', 'POST', 'DELETE']
+
+    if edit_form is None:
+        edit_allowed = False
+        view_methods = ['DELETE']
+
+    bp_admin.add_url_rule(f'/{resource_name}/',
+                          view_func=TableView.as_view(f'{resource_name}_table', model=model, edit_allowed=edit_allowed))
+    bp_admin.add_url_rule(f'/{resource_name}/<int:resource_id>', view_func=view_func, methods=view_methods)
+
+
+register_admin_resource(Album, UpdateAlbumForm)
+register_admin_resource(Tour, UpdateTourForm)
+register_admin_resource(User)

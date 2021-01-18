@@ -1,0 +1,278 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-01-15 20:52+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: app/extentions.py:17
+msgid "You need to be logged in to access this page."
+msgstr ""
+
+#: app/admin/views.py:23
+msgid "You need to be an administrator to access this page."
+msgstr ""
+
+#: app/album/forms.py:10 app/album/templates/show_album.html:11
+#: app/tour/forms.py:12 app/tour/templates/show_tour.html:6
+msgid "Title"
+msgstr ""
+
+#: app/album/forms.py:16 app/album/templates/show_album.html:12
+#: app/tour/forms.py:18 app/tour/templates/show_tour.html:7
+msgid "Artist"
+msgstr ""
+
+#: app/album/forms.py:22 app/album/templates/show_album.html:13
+#: app/tour/forms.py:24 app/tour/templates/show_tour.html:8
+msgid "Description"
+msgstr ""
+
+#: app/album/forms.py:29 app/album/templates/show_album.html:14
+#: app/tour/forms.py:31 app/tour/templates/show_tour.html:9
+msgid "Genre"
+msgstr ""
+
+#: app/album/forms.py:39 app/album/templates/show_album.html:15
+msgid "Release date"
+msgstr ""
+
+#: app/album/forms.py:46
+msgid "Album cover"
+msgstr ""
+
+#: app/album/forms.py:51
+msgid "Upload album"
+msgstr ""
+
+#: app/album/forms.py:56 app/album/templates/edit_album.html:2
+msgid "Update album information"
+msgstr ""
+
+#: app/album/views.py:39
+msgid "New album has been added."
+msgstr ""
+
+#: app/album/views.py:67 app/tour/views.py:57 app/tour/views.py:95
+msgid "You are not authorized to do this."
+msgstr ""
+
+#: app/album/views.py:83
+msgid "The album has been updated."
+msgstr ""
+
+#: app/album/views.py:103
+msgid "The album has been deleted."
+msgstr ""
+
+#: app/album/templates/create_album.html:2 app/templates/partials/_base.html:56
+msgid "Upload new album"
+msgstr "Upload novog albuma"
+
+#: app/album/templates/list_albums.html:4
+msgid "Check out these albums"
+msgstr ""
+
+#: app/album/templates/list_albums.html:23
+msgid "Release on"
+msgstr ""
+
+#: app/album/templates/list_albums.html:29
+#: app/tour/templates/list_tours.html:28
+msgid "Posted by you"
+msgstr ""
+
+#: app/album/templates/list_albums.html:31
+msgid "Posted by "
+msgstr ""
+
+#: app/album/templates/list_albums.html:37
+msgid "There are no albums to show."
+msgstr ""
+
+#: app/album/templates/show_album.html:17
+msgid "Edit album"
+msgstr ""
+
+#: app/album/templates/show_album.html:19
+msgid "Delete album"
+msgstr ""
+
+#: app/album/templates/show_album.html:19
+msgid "Are you sure that you want to permanently delete this album?"
+msgstr ""
+
+#: app/auth/forms.py:11
+msgid "Username *"
+msgstr ""
+
+#: app/auth/forms.py:12 app/auth/forms.py:17 app/auth/forms.py:23
+#: app/auth/forms.py:29 app/auth/forms.py:47 app/auth/forms.py:53
+msgid "Input is required."
+msgstr ""
+
+#: app/auth/forms.py:13 app/auth/forms.py:18 app/auth/forms.py:24
+#: app/auth/forms.py:30 app/auth/forms.py:48 app/auth/forms.py:54
+msgid "Data is required."
+msgstr ""
+
+#: app/auth/forms.py:14 app/auth/forms.py:25 app/auth/forms.py:55
+msgid "Username must be between 3 and 20 characters long."
+msgstr ""
+
+#: app/auth/forms.py:16
+msgid "Email *"
+msgstr ""
+
+#: app/auth/forms.py:19 app/auth/forms.py:49
+msgid "Email must be between 6 and 30 characters long."
+msgstr ""
+
+#: app/auth/forms.py:20 app/auth/forms.py:50
+msgid "You did not enter valid email!"
+msgstr ""
+
+#: app/auth/forms.py:22 app/auth/forms.py:28
+msgid "Password *"
+msgstr ""
+
+#: app/auth/forms.py:26
+msgid "Password must match."
+msgstr ""
+
+#: app/auth/forms.py:32
+msgid "Sign up"
+msgstr ""
+
+#: app/auth/forms.py:37 app/auth/forms.py:42
+msgid "User name already exists."
+msgstr ""
+
+#: app/auth/forms.py:46
+msgid "Your email *"
+msgstr ""
+
+#: app/auth/forms.py:52
+msgid "Your password *"
+msgstr ""
+
+#: app/auth/forms.py:57
+msgid "Keep me logged in"
+msgstr ""
+
+#: app/auth/forms.py:58 app/templates/partials/_base.html:31
+msgid "Login"
+msgstr ""
+
+#: app/auth/views.py:26
+msgid "You are registered."
+msgstr ""
+
+#: app/auth/views.py:44
+msgid "Invalid email or password"
+msgstr ""
+
+#: app/auth/views.py:48
+msgid "Logged in."
+msgstr ""
+
+#: app/templates/partials/_base.html:26
+msgid "Home"
+msgstr ""
+
+#: app/templates/partials/_base.html:37
+msgid "Register"
+msgstr ""
+
+#: app/templates/partials/_base.html:44
+msgid "See albums"
+msgstr ""
+
+#: app/templates/partials/_base.html:50
+msgid "See tours"
+msgstr ""
+
+#: app/templates/partials/_base.html:62 app/tour/templates/create_tour.html:2
+msgid "Upload new tour"
+msgstr ""
+
+#: app/templates/partials/_base.html:67
+msgid "Logout"
+msgstr ""
+
+#: app/templates/partials/_header.html:4
+msgid "You are logged in as"
+msgstr ""
+
+#: app/tour/forms.py:37 app/tour/templates/show_tour.html:10
+msgid "Start date"
+msgstr ""
+
+#: app/tour/forms.py:44 app/tour/templates/show_tour.html:11
+msgid "End date"
+msgstr ""
+
+#: app/tour/forms.py:59
+msgid "Upload tour"
+msgstr ""
+
+#: app/tour/forms.py:64 app/tour/templates/edit_tour.html:2
+msgid "Update tour information"
+msgstr ""
+
+#: app/tour/views.py:42
+msgid "The new tour has been added."
+msgstr ""
+
+#: app/tour/views.py:77
+msgid "The tour has been updated."
+msgstr ""
+
+#: app/tour/views.py:99
+msgid "The tour has been deleted."
+msgstr ""
+
+#: app/tour/templates/list_tours.html:4
+msgid "Check out these tours"
+msgstr ""
+
+#: app/tour/templates/list_tours.html:22
+msgid "From"
+msgstr ""
+
+#: app/tour/templates/list_tours.html:22
+msgid "to"
+msgstr ""
+
+#: app/tour/templates/list_tours.html:30
+msgid "Posted by"
+msgstr ""
+
+#: app/tour/templates/list_tours.html:36
+msgid "There are no tours to show."
+msgstr ""
+
+#: app/tour/templates/show_tour.html:13
+msgid "Edit tour"
+msgstr ""
+
+#: app/tour/templates/show_tour.html:15
+msgid "Delete tour"
+msgstr ""
+
+#: app/tour/templates/show_tour.html:15
+msgid "Are you sure that you want to permanently delete this tour?"
+msgstr ""
+

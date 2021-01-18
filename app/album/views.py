@@ -4,7 +4,7 @@ from flask_babel import _
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
-from app import db
+from app.extentions import db
 from app.album.forms import CreateAlbumForm, UpdateAlbumForm
 from app.album.models import Album
 from app.helpers.helpers import save_image_upload
