@@ -59,4 +59,7 @@ def create_app(config_env=app_env):
 
     Migrate(app, db)
 
+    from cli import register_click_commands
+    register_click_commands(app)
+
     return app
