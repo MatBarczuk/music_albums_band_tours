@@ -90,7 +90,6 @@ def edit(slug):
     return render_template("edit_album.html", album=album, form=form)
 
 
-# Route for deleting an album
 @bp_album.route("/delete/<slug>", methods=["POST"])
 @login_required
 def delete(slug):

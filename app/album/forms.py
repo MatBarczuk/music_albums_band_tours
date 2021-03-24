@@ -34,7 +34,6 @@ class AlbumForm(FlaskForm):
                         ])
 
 
-# Form for creating albums
 class CreateAlbumForm(AlbumForm):
     release_date = DateField(_l("Release date"),
                              validators=[
@@ -51,6 +50,5 @@ class CreateAlbumForm(AlbumForm):
     submit = SubmitField(_l("Upload album"))
 
 
-# Form for updating albums
 class UpdateAlbumForm(AlbumForm):
     submit = SubmitField(_l("Update album information"))

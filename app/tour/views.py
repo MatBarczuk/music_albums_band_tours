@@ -1,11 +1,6 @@
-# Imports from Flask
 from flask import Blueprint, render_template, flash, abort, url_for, redirect
-# Extension for implementing Flask-Login for authentication
 from flask_login import current_user, login_required
-# Extension for implementing translations
 from flask_babel import _
-from flask_babel import lazy_gettext as _l
-# Imports from the app package
 from app.extentions import db
 from app.tour.models import Tour
 
@@ -14,7 +9,6 @@ from app.tour.forms import CreateTourForm, UpdateTourForm
 bp_tour = Blueprint("tour", __name__, template_folder="templates")
 
 
-# Route for listing tours
 @bp_tour.route("/")
 @login_required
 def tours_list():
@@ -22,7 +16,6 @@ def tours_list():
     return render_template("list_tours.html", tours=tours)
 
 
-# Route for creating new tours
 @bp_tour.route("/create", methods=["GET", "POST"])
 @login_required
 def create():
@@ -45,7 +38,6 @@ def create():
     return render_template("create_tour.html", form=form)
 
 
-# Route for updating a bp_tour
 @bp_tour.route("/edit/<slug>", methods=["GET", "POST"])
 @login_required
 def edit(slug):
@@ -86,7 +78,6 @@ def edit(slug):
     return render_template("edit_tour.html", tour=tour, form=form)
 
 
-# Route for deleting a tour
 @bp_tour.route("/delete/<slug>", methods=["POST"])
 @login_required
 def delete(slug):
@@ -100,7 +91,6 @@ def delete(slug):
     return redirect(url_for("main.index"))
 
 
-# Route for showing a tour
 @bp_tour.route("/show/<slug>")
 @login_required
 def show(slug):

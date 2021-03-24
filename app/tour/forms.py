@@ -1,13 +1,10 @@
-# Extension for implementing WTForms for managing web forms
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, SubmitField, TextAreaField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import InputRequired, DataRequired, Length, ValidationError
-# Extension for implementing translations
 from flask_babel import lazy_gettext as _l
 
 
-# General Tour form
 class TourForm(FlaskForm):
     title = StringField(_l("Title"),
                         validators=[
@@ -54,11 +51,9 @@ class TourForm(FlaskForm):
             raise ValidationError("Start date needs to be before the end date.")
 
 
-# Form for creating new tours
 class CreateTourForm(TourForm):
     submit = SubmitField(_l("Upload tour"))
 
 
-# Form for updating a tour
 class UpdateTourForm(TourForm):
     submit = SubmitField(_l("Update tour information"))
