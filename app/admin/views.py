@@ -51,7 +51,7 @@ class ModifyResourceView(MethodView):
         self.columns = self.model.__mapper__.columns.keys()
         self.resource_name = self.model.__name__.lower()
         self.form = edit_form()
-        super(MethodView, self).__init__()
+        super(ModifyResourceView, self).__init__()
 
     def get(self, resource_id):
         form = self.form

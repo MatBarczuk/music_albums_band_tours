@@ -12,6 +12,9 @@ app_env = os.environ.get('FLASK_ENV')
 def create_app(config_env=app_env):
     app = Flask(__name__)
 
+    if not config_env:
+        config_env = 'development'
+
     app.config.from_object(f'config.{config_env.capitalize()}Config')
 
     init_extensions(app)

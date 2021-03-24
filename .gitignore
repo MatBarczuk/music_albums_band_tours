@@ -2,3 +2,4 @@
 .idea
 *.db
 migrations
+config.py
